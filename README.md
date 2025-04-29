@@ -1,25 +1,113 @@
-# video2pdfslides
-# Description
-This project converts a video presentation into a deck of pdf slides by capturing screenshots of unique frames
+# 🤖 Automated-and-Intelligent-Note-Making
 
-# Setup
+This repository contains Python scripts for automating note-making tasks:
+1. Converting recorded presentation videos into PDF slide decks.
+2. Speech recognition and emotion detection on audio input.
+
+---
+
+## 📁 Repository Structure
+
+```
+Automated-and-Intelligent-Note-Making/
+├── input/                      # Sample videos for slide conversion
+│   ├── Test Video 1.mp4
+│   └── Test Video 2.mp4
+├── output/                     # Generated outputs (screenshots, PDFs)
+├── video2pdfslides.py          # Script to convert video into PDF slides
+├── Speech_Recognition.py       # Script for speech-to-text transcription
+├── Speech_Emotion_Recognition.py # Script for extracting speech emotion features
+├── requirements.txt            # Python dependencies
+├── .gitignore                  # Git ignore rules
+└── README.md                   # This file
+```
+
+---
+
+## 🧰 Setup
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-# Steps to run the code
+## ⚙️ Scripts
+
+### 1. Video to PDF Slides (`video2pdfslides.py`)
+
+Captures unique frames from a presentation video and compiles them into a PDF slide deck.
+
+**Usage:**
+
+```bash
 python video2pdfslides.py <video_path>
+```
 
-it will capture screenshots of unique frames and save it output folder...once screenshots are captured the program is paused and the user is asked to manually verify the screenshots and delete any duplicate images. Once this is done the program continues and creates a pdf out of the screenshots.
+- **Input**: Path to an MP4 video.
+- **Process**:
+  1. Extracts frames where significant scene changes occur.
+  2. Pauses for manual review to delete duplicate or unwanted frames.
+  3. Generates a PDF of the remaining frames.
+- **Output**: PDF saved in `output/` directory (e.g., `slides.pdf`).
 
-# Example
-There are two sample video avilable in "./input", you can test the code using these input by running
-<li>python video2pdfslides.py "./input/Test Video 1.mp4" (4 unique slide)
-<li>python video2pdfslides.py "./input/Test Video 2.mp4" (19 unique slide)
+### 2. Speech Recognition (`Speech_Recognition.py`)
 
+Transcribes speech from an audio source to text.
 
-# More
-If you are not happy with the results, you can fine tune parameters given in the code. It is always possible to get good results for any video, if you have right set of parameters. Just play around with it and you will develop an intution. This Could be especially necessray when you are dealing with video presentation with animations.
+**Usage:**
 
+```bash
+python Speech_Recognition.py --audio <audio_path> --output <transcript.txt>
+```
 
-# Developer contact info
-kaushik jeyaraman: kaushikjjj@gmail.com
+- **Dependencies**: Requires `speech_recognition` library.
+- **Features**:
+  - Supports WAV and MP3 formats.
+  - Outputs plain text transcription.
+
+### 3. Speech Emotion Recognition (`Speech_Emotion_Recognition.py`)
+
+Extracts emotion-related features from speech audio.
+
+**Usage:**
+
+```bash
+python Speech_Emotion_Recognition.py --audio <audio_path> --output <features.csv>
+```
+
+- **Dependencies**: Requires libraries like `librosa` and `numpy`.
+- **Features**:
+  - Extracts pitch, energy, MFCCs.
+  - Saves features to a CSV for further analysis.
+
+---
+
+## 📝 Example
+
+Convert a demo video into slides:
+
+```bash
+python video2pdfslides.py "./input/Test Video 1.mp4"
+```
+
+Transcribe audio:
+
+```bash
+python Speech_Recognition.py --audio "./input/sample_audio.wav" --output transcript.txt
+```
+
+Extract emotion features:
+
+```bash
+python Speech_Emotion_Recognition.py --audio "./input/sample_audio.wav" --output features.csv
+```
+
+---
+
+## 👤 Author
+
+**Abhishek Narayan**  
+IIT Delhi
